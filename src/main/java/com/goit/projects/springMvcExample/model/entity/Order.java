@@ -1,5 +1,7 @@
 package com.goit.projects.springMvcExample.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,6 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "client_order")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "orderId")
 public class Order {
 
     @Id

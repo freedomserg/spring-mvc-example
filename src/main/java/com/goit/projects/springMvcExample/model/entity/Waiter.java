@@ -1,5 +1,7 @@
 package com.goit.projects.springMvcExample.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -9,6 +11,9 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "employee_id")
 public class Waiter extends Employee {
 
     @OneToMany(mappedBy = "waiter", fetch = FetchType.EAGER)
